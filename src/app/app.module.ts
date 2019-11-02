@@ -6,8 +6,10 @@ import { AppComponent } from './app.component';
 import { MovieComponent } from './components/movie/movie.component';
 import { MoviesComponent } from './components/movies/movies.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { TarjetasComponent } from './shared/tarjetas/tarjetas.component';
+import { CardsComponent } from './shared/cards/cards.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { NoimagePipe } from './pipes/noimage.pipe';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { HttpClientModule } from '@angular/common/http';
     MovieComponent,
     MoviesComponent,
     NavbarComponent,
-    TarjetasComponent
+    CardsComponent,
+    NoimagePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

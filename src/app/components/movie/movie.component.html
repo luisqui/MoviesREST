@@ -1,1 +1,35 @@
-<p>movie works!</p>
+<h1>Movie: <small>{{movie.name}}</small></h1>
+<hr>
+<div class="row animated fadeIn faster">
+    <div class="col">
+        <form (ngSubmit)="save(f)" #f = "ngForm" >
+            <div class="form-group">
+                <label>Movie ID</label>
+                <input type="text" [(ngModel)]="movie.id" name="id" disabled="disabled" class="form-control" placeholder="MovieID">
+                <small class="form-text text-muted">This field is self generated</small>
+            </div>
+
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" [(ngModel)]="movie.name" name="name"  class="form-control" placeholder="Movie Name" required>
+            </div>
+
+            <div class="form-group">
+                <label>Genre</label>
+                <input type="text" [(ngModel)]="movie.genre" name="genre"  class="form-control" placeholder="Genre" required>
+            </div>
+
+            <hr>
+            <div class="form-group text-right">
+                <button routerLink="/movies" class="btn btn-danger w-10">
+                    <i class="fa fa-arrow-left"></i>
+                    Back
+                </button>
+                <button type="submit" class="btn btn-primary w-10">
+                    <i class="fa fa-save"></i>
+                    Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

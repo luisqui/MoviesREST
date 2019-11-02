@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MovieModel } from '../models/movie.model';
-import { map } from "rxjs/operators";
+import { map, delay } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoviesService {
+
   private url = 'http://35.232.123.59:4000';
   private urlImage = 'https://api.themoviedb.org/3/search/movie?api_key=f0a3ad0442476101dd28cbbade8db22d&language=en-US';
 
@@ -14,13 +15,8 @@ export class MoviesService {
 
 
   createMovie(movie: MovieModel) {
-    return this.http.post(`${this.url}/items`, movie)
-            .pipe(
-              map( (resp: any) => {
-                movie.id = resp.name;
-                return movie;
-              })
-            );
+
+    return this.http.post(`${this.url}/items`, movie);
  }
 
   updateMovie( movie: MovieModel) {
@@ -29,7 +25,7 @@ export class MoviesService {
      ...movie
    };
 
-   delete movieTemp.id;
+   delete movieTemp.img;
    return this.http.put(`${this.url}/items/${movie.id}`, movieTemp);
  }
 
@@ -39,12 +35,16 @@ export class MoviesService {
  }
 
   getMovie(id: string) {
-   return this.http.get (`${this.url}/items/${id}`);
+   return this.http.get (`${this.url}/items/${id}`)
+      .pipe(map((resp: any) =>{
+        return resp[0];
+      }));
  }
 
 
   getMovies() {
-   return this.http.get(`${this.url}/items`);
+   return this.http.get(`${this.url}/items`)
+          .pipe(delay(100));
 
  }
 
@@ -52,7 +52,11 @@ export class MoviesService {
   return this.http.get(`${this.urlImage}&query=${name}&page=1&include_adult=false`)
         .pipe(
           map((resp:any) => {
-              return resp.results;
+            if (resp.results[0].poster_path){
+              return 'https://image.tmdb.org/t/p/w600_and_h900_bestv2' + resp.results[0].poster_path;
+            } else {
+              return null;
+            }
           }));
  }
 
