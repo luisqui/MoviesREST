@@ -1,6 +1,9 @@
 <div class="card-columns m-5 animated fadeIn faster ">
-    <div  *ngFor="let item of items; let i = index;" class="card ">
-        <img  [routerLink]="['/movie', item.id]" *ngIf="item.img" [src]="item.img | noimage" class="card-img-top puntero" alt="...">
+    <div  *ngFor="let item of items; let i = index;" class="card cardContainer  " >
+        <img  [routerLink]="['/movie', item.id]" *ngIf="item.img" [src]="item.img | noimage" class="card-img-top puntero " alt="...">
+        <div>
+
+        </div>
         <div class="card-body">
             <h5 class="card-title">
                 {{item.name}}
@@ -8,11 +11,15 @@
             <p class="card-text">
                 <span class="badge badge-pill badge-primary">{{item.genre}}</span>
             </p>
-            <button class="btn btn-info mr-1" [routerLink]="['/movie', item.id]">
+        </div>
+        <div class="cardButtons w-100 ">
+            <div class="btn-left w-50 puntero " [routerLink]="['/movie', item.id]">
                     <i class="fa fa-pen"></i>
-                </button>
-                <button (click)="deleteMovie(item, i)" class="btn btn-danger mr-1">
-                    <i class="fa fa-trash"></i>
-                </button>
+            </div>
+            <div (click)="deleteMovie(item, i)" class="btn-right  w-50 puntero ">
+                <i class="fa fa-trash"></i>
+            </div>
         </div>
     </div>
+</div>
+

@@ -51,12 +51,15 @@ export class MoviesService {
  getMovieImage(name: string) {
   return this.http.get(`${this.urlImage}&query=${name}&page=1&include_adult=false`)
         .pipe(
-          map((resp:any) => {
-            if (resp.results[0].poster_path){
-              return 'https://image.tmdb.org/t/p/w600_and_h900_bestv2' + resp.results[0].poster_path;
-            } else {
-              return null;
+          map((resp: any) => {
+            if (!(resp.results.length === 0)) {
+              for (let i = 0; i < resp.results.length; i++) {
+                if (resp.results[i].poster_path){
+                  return 'https://image.tmdb.org/t/p/w600_and_h900_bestv2' + resp.results[i].poster_path;
+                }
+              }
             }
+            return 'noimage';
           }));
  }
 

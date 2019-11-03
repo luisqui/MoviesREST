@@ -15,7 +15,7 @@ export class MovieComponent implements OnInit {
 
   movie: MovieModel = new MovieModel();
   possible = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
+  submitted = false;
   constructor(private moviesService: MoviesService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -37,8 +37,7 @@ export class MovieComponent implements OnInit {
   save( form: NgForm) {
 
     if (form.invalid) {
-      // TODO: FORM VALIDATIONS
-      console.log('Invalid Form');
+      this.submitted = true;
       return;
     }
 

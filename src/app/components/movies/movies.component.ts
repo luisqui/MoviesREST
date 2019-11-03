@@ -18,7 +18,7 @@ export class MoviesComponent implements OnInit  {
       this.moviesService.getMovies()
       .subscribe((resp: any) => {
       for (let i = resp.length - 1; i >= 0; i--) {
-        if (resp[i].id == null || resp[i].id === '' ){
+        if (resp[i].id == null || resp[i].id === '' ) {
           resp.splice( i, 1 );
         }
       }
@@ -32,7 +32,7 @@ export class MoviesComponent implements OnInit  {
     this.movieData.forEach(element => {
       this.moviesService.getMovieImage(element.name).subscribe(resp => {
          element.img = resp;
-         console.log(element);
+         //console.log(element);
       });
     });
   }

@@ -1,35 +1,51 @@
-<h1>Movie: <small>{{movie.name}}</small></h1>
-<hr>
-<div class="row animated fadeIn faster">
-    <div class="col">
-        <form (ngSubmit)="save(f)" #f = "ngForm" >
-            <div class="form-group">
-                <label>Movie ID</label>
-                <input type="text" [(ngModel)]="movie.id" name="id" disabled="disabled" class="form-control" placeholder="MovieID">
-                <small class="form-text text-muted">This field is self generated</small>
-            </div>
+<div class="container">
+    <div class="form">
+        <h1>Movie: <small>{{movie.name}}</small></h1>
+        <hr>
+        <div class="row animated fadeIn faster">
+            <div class="col">
+                <form (ngSubmit)="save(f)" [ngClass]="submitted ? 'was-validated': 'need-validation'"  #f = "ngForm"  >
+                    <div class="form-group">
+                        <label for="id">Movie ID</label>
+                        <input type="text" [(ngModel)]="movie.id" id="id" name="id" disabled="disabled" class="form-control" placeholder="MovieID">
+                        <small class="form-text text-muted">This field is self generated</small>
+                    </div>
 
-            <div class="form-group">
-                <label>Name</label>
-                <input type="text" [(ngModel)]="movie.name" name="name"  class="form-control" placeholder="Movie Name" required>
-            </div>
+                    <div class="form-group ">
+                        <label for="name">Name</label>
+                        <input type="text" [(ngModel)]="movie.name" id="name" name="name"  class="form-control" placeholder="Movie Name" minlength="3" #name="ngModel" required >
+                        <div *ngIf="name.errors?.required" class="invalid-feedback">
+                            This field is required
+                        </div>
+                        <div *ngIf="name.errors?.minlength" class="invalid-feedback">
+                            This field require at least 3 characters
+                        </div>
+                    </div>
 
-            <div class="form-group">
-                <label>Genre</label>
-                <input type="text" [(ngModel)]="movie.genre" name="genre"  class="form-control" placeholder="Genre" required>
-            </div>
+                    <div class="form-group">
+                        <label for="genre">Genre</label>
+                        <input type="text" [(ngModel)]="movie.genre" id="genre" name="genre"  class="form-control" placeholder="Genre" minlength="3" #genre="ngModel" required>
+                        <div *ngIf="genre.errors?.required" class="invalid-feedback">
+                                This field is required
+                        </div>
+                        <div *ngIf="genre.errors?.minlength" class="invalid-feedback">
+                            This field require at least 3 characters
+                        </div>
+                    </div>
 
-            <hr>
-            <div class="form-group text-right">
-                <button routerLink="/movies" class="btn btn-danger w-10">
-                    <i class="fa fa-arrow-left"></i>
-                    Back
-                </button>
-                <button type="submit" class="btn btn-primary w-10">
-                    <i class="fa fa-save"></i>
-                    Save
-                </button>
+                    <hr>
+                    <div class="form-group text-right">
+                        <button  type="submit" class="btn btn-primary submit w-10">
+                            <i class="fa fa-save"></i>
+                            Save
+                        </button>
+                        <button  routerLink="/movies" class="btn btn-danger w-10">
+                            <i class="fa fa-arrow-left"></i>
+                            Back
+                        </button>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
 </div>

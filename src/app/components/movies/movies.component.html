@@ -1,22 +1,24 @@
-<h1>Movie List</h1>
-<hr>
+<div class="cardContainer">
+    <h1>Movie List</h1>
+    <hr>
 
-<app-cards *ngIf="!loading && movieData.length > 0" [items]="movieData"></app-cards>
+    <app-cards *ngIf="!loading && movieData.length > 0" [items]="movieData"></app-cards>
 
-<div *ngIf="loading" class="alert alert-info text-center mt-3 animated fadeIn faster">
-    <h4 class="alert-heading">Loading</h4>
-    <p>
-        <i class="fa fa-sync-alt fa-spin fa-2x"></i>
-    </p>
-    <p class="mb-0">
-        Please Wait
-    </p>
-</div>
+    <div *ngIf="loading" class="alert alert-info text-center mt-3 animated fadeIn faster">
+        <h4 class="alert-heading">Loading</h4>
+        <p>
+            <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+        </p>
+        <p class="mb-0">
+            Please Wait
+        </p>
+    </div>
 
-<div  *ngIf="!loading && movieData.length == 0 " class="alert alert-warning text-center mt-3 animated fadeIn faster">
-    <h4 class="alert-heading">No records found</h4>
-    <p>
-        <i class="fa fa-exclamation fa-2x"></i>
-    </p>
+    <div  *ngIf="!loading && movieData.length == 0 " class="alert alert-warning text-center mt-3 animated fadeIn faster">
+        <h4 class="alert-heading">No records found</h4>
+        <p>
+            <i class="fa fa-exclamation fa-2x"></i>
+        </p>
 
+    </div>
 </div>
