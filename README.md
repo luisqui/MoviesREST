@@ -11,8 +11,6 @@ Cards Component:  show the information obtained from the movies component with a
 
 # How to install
 
-I did the DIST folder to the production export but if you want to install the application and the node modules:
-
 Download or clone the repository and use the npm install to get the node modules
 
 In case of you get the CORS error, i solved that installing the chrome extention: 
