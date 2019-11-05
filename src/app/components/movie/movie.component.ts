@@ -22,10 +22,11 @@ export class MovieComponent implements OnInit {
 
     const id = this.route.snapshot.paramMap.get('id');
 
+    // Obtain the information about the movie selected, if the id sended does not exist, send the user to the home screen.
     if (id !== 'new') {
       this.moviesService.getMovie(id)
           .subscribe((resp: MovieModel) => {
-            if (resp === undefined){
+            if (resp === undefined) {
               this.router.navigate(['/movies']);
             } else {
               this.movie = resp;
@@ -49,6 +50,8 @@ export class MovieComponent implements OnInit {
     });
     Swal.showLoading();
 
+
+    // Update or create the movie if the information comes with or without the ID
     let petition: Observable<any>;
     if (this.movie.id) {
       petition = this.moviesService.updateMovie(this.movie);
@@ -67,6 +70,7 @@ export class MovieComponent implements OnInit {
 
   }
 
+  // Generates an id of n (length)  random characters (char) using the chars setted in the variable "possible"
   generateID(length: number, chars: string) {
     let id = '';
     for (let i = length; i > 0; i--) {

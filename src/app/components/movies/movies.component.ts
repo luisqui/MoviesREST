@@ -15,6 +15,8 @@ export class MoviesComponent implements OnInit  {
 
   ngOnInit() {
       this.loading = true;
+
+      // Obtains all the movies of the api an then filter that movies leaving only those with the ID property
       this.moviesService.getMovies()
       .subscribe((resp: any) => {
       for (let i = resp.length - 1; i >= 0; i--) {
@@ -23,12 +25,13 @@ export class MoviesComponent implements OnInit  {
         }
       }
       this.movieData = resp;
-      this.obtenerImagen();
+      this.obtainImage();
       this.loading = false;
     });
   }
 
-  obtenerImagen() {
+  // Get petition to the API the movie DB searching by the name of the movie.
+  obtainImage() {
     this.movieData.forEach(element => {
       this.moviesService.getMovieImage(element.name).subscribe(resp => {
          element.img = resp;

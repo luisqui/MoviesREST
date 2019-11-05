@@ -1,26 +1,20 @@
 # MoviesRest
 Repository to load the technical test for the frontend role
 
-## Development server
+# Componentes of the APP
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Movie component: This component is used to manage three operations of the api (Read One, Update and Create) through a table, sending or receiving the information depending of the operation executed (Get:id, POST or PUT).
 
-## Code scaffolding
+Movies Component: This component is responsible for obtain the information through the Get All operation and asign an image to each movie obtained using another API from https://api.themoviedb.org.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Cards Component:  show the information obtained from the movies component with a set of bootstrap cards with some animations or translation effects.
 
-## Build
+# How to install
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+I did the DIST folder to the production export but if you want to install the application and the node modules:
 
-## Running unit tests
+Download or clone the repository and use the npm install to get the node modules
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+In case of you get the CORS error, i solved that installing the chrome extention: 
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+https://chrome.google.com/webstore/detail/moesif-orign-cors-changer/digfbfaphojjndkpccljibejjbppifbc

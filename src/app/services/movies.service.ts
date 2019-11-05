@@ -19,6 +19,8 @@ export class MoviesService {
     return this.http.post(`${this.url}/items`, movie);
  }
 
+ // Delete the property image added in the object and then update the object in the API, an aux variable is needed
+ // to do not modify the model of the movie since everything is passed by reference
   updateMovie( movie: MovieModel) {
 
    const movieTemp = {
@@ -36,18 +38,21 @@ export class MoviesService {
 
   getMovie(id: string) {
    return this.http.get (`${this.url}/items/${id}`)
-      .pipe(map((resp: any) =>{
+      .pipe(map((resp: any) => {
         return resp[0];
       }));
  }
 
-
+  // The delay method is onlymused for you to see the Loading div when the movies are called
   getMovies() {
    return this.http.get(`${this.url}/items`)
           .pipe(delay(100));
 
  }
 
+ // Here i call the image from the API and some filters are made in case of not finding the image in the first
+ // object or if the name of the movie does not exist in the DB, so an string "noimage" is sended to be catched in
+ // the pipe "noimage", in the case that the image is found, the data is mapped to send only the information needed. 
  getMovieImage(name: string) {
   return this.http.get(`${this.urlImage}&query=${name}&page=1&include_adult=false`)
         .pipe(
