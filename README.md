@@ -1,7 +1,7 @@
 # MoviesRest
 Repository to load the technical test for the frontend role
 
-# Componentes of the APP
+# Components of the APP
 
 Movie component: This component is used to manage three operations of the api (Read One, Update and Create) through a table, sending or receiving the information depending of the operation executed (Get:id, POST or PUT).
 
