@@ -12,6 +12,7 @@ Cards Component:  show the information obtained from the movies component with a
 # How to install
 
 Download or clone the repository and use the npm install to get the node modules
+Install the sweetalert2 module with npm install sweetalert2
 
 In case of you get the CORS error, i solved that installing the chrome extention: 
 
